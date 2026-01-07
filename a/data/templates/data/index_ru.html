@@ -1,0 +1,36 @@
+{% extends "data/base.html" %}
+
+{% block title %}
+Investlab.io — Investment Project Ratings, Analytics & Expert Reviews
+{% endblock %}
+
+{% block description %}
+Investlab.io is an independent analytical platform focused on investment projects, DeFi platforms, and digital assets. We provide ratings, expert reviews, risk analysis, and transparency assessments to help investors make informed decisions.
+{% endblock %}
+
+{% block keywords %}
+investment projects, investment analytics, project ratings, DeFi platforms, crypto investments, expert reviews, risk analysis
+{% endblock %}
+
+{% block content %}
+<h1>Рейтинг и аналитика инвестиционных проектов</h1>
+
+<p>
+Investlab.io — независимая аналитическая платформа для инвесторов, объединяющая инвестиционные проекты, DeFi-платформы и цифровые активы. Мы систематизируем открытые данные и оцениваем проекты по прозрачности, устойчивости и уровню риска.
+</p>
+
+<p>
+Каждый проект проходит многофакторный анализ: история работы, активность, репутация, экономическая модель и потенциальные риски. Рейтинги Investlab.io не являются рекламой и не содержат инвестиционных рекомендаций.
+</p>
+
+<p>
+Платформа помогает сравнивать инвестиционные направления, отслеживать рыночные тренды и принимать взвешенные решения на основе аналитики и экспертных мнений.
+</p>
+
+
+<ul>
+{% for item in items %}
+    <li><a href="{{ item.get_absolute_url }}">{{ item.project_name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

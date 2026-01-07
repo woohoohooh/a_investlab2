@@ -1,0 +1,27 @@
+{% extends "data/base.html" %}
+
+{% block title %}{{ item.title }}{% endblock %}
+{% block description %}{{ item.description_seo }}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1>{{ item.project_name }}</h1>
+
+        {% if item.project_subname %}
+            <h2>{{ item.project_subname }}</h2>
+        {% endif %}
+
+        {% if item.description_short %}
+            <p>{{ item.description_short|safe }}</p>
+        {% endif %}
+
+        <p><strong>Статус:</strong> {{ item.status }}</p>
+        <p><strong>Локация:</strong> {{ item.location }}</p>
+
+        {% if item.url %}
+            <p><a href="{{ item.url }}" target="_blank">Официальный сайт</a></p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

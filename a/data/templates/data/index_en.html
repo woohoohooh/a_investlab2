@@ -1,0 +1,39 @@
+{% extends "data/base.html" %}
+
+{% block title %}
+Investlab.io — Investment Project Ratings, Analytics & Expert Reviews
+{% endblock %}
+
+{% block description %}
+Investlab.io is an independent analytical platform focused on investment projects, DeFi platforms, and digital assets. We provide ratings, expert reviews, risk analysis, and transparency assessments to help investors make informed decisions.
+{% endblock %}
+
+{% block keywords %}
+investment projects, investment analytics, project ratings, DeFi platforms, crypto investments, expert reviews, risk analysis
+{% endblock %}
+
+{% block content %}
+<h1>Investment Projects, Analytics and Independent Ratings</h1>
+
+<p>
+Investlab.io is an analytical platform designed for investors seeking reliable information about investment projects, DeFi platforms, crypto initiatives, and tokenized assets. We collect, structure, and evaluate data from open sources, focusing on transparency, sustainability, and long-term potential.
+</p>
+
+<p>
+Each investment project on Investlab.io is reviewed using multiple criteria, including operational history, public reputation, activity dynamics, risk indicators, and capital efficiency. Our ratings are not promotional and do not represent financial advice — they are designed to help investors compare projects objectively.
+</p>
+
+<p>
+The platform covers a wide range of investment areas, from decentralized finance and blockchain-based solutions to traditional investment models. We regularly update analytics, expert opinions, and project data to reflect market changes and emerging trends.
+</p>
+
+<p>
+Investlab.io is not a financial intermediary and does not accept or manage investments. Our mission is to provide investors with structured information, analytical insights, and tools for independent decision-making in a rapidly evolving investment environment.
+</p>
+
+<ul>
+{% for item in items %}
+    <li><a href="{{ item.get_absolute_url }}">{{ item.project_name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

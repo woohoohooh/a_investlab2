@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f8;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .error-container {
+        max-width: 700px;
+        background: #ffffff;
+        border: 2px solid #dcdde1;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    .error-container .error-code {
+        font-size: 2.5rem;
+        color: #e74c3c;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .error-container p {
+        margin: 10px 0;
+        color: #34495e;
+    }
+    .error-container .hint {
+        color: #7f8c8d;
+        font-style: italic;
+    }
+    .error-container .back-link {
+        display: inline-block;
+        margin-top: 25px;
+        font-size: 1rem;
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+        border: 1px solid #3498db;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    .error-container .back-link:hover {
+        background-color: #3498db;
+        color: #ffffff;
+    }
+</style>
+<title>Error 404 | Investlab</title>
+</head>
+
+<body>
+<div class="error-container">
+    <div class="error-code">404 Error</div>
+    <p>The page you are looking for could not be found.</p>
+    <p class="hint">It may have been moved, deleted, or the URL was typed incorrectly.</p>
+    <p>Try returning to the homepage and continue browsing the platform.</p>
+    <a href="/" class="back-link">Go to Homepage</a>
+</div>
+</body>
+</html>

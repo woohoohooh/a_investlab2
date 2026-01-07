@@ -1,0 +1,111 @@
+{% extends "data/base.html" %}
+
+{% block title %}{{ step.title }}{% endblock %}
+
+{% block description %}{{ step.seo_description }}{% endblock %}
+
+{% block keywords %}{{ step.keywords }}{% endblock %}
+
+{% load blog_extras %}
+
+{% block content %}
+
+<style>
+    .comments-section {
+        margin-top: 40px;
+    }
+    .comments-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .comment-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background-color: #fcfcfc;
+    }
+    .comment-item strong {
+        font-size: 1.1em;
+        color: #333;
+    }
+    .comment-item p {
+        margin: 10px 0 0;
+        line-height: 1.5;
+    }
+    .comment-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+    }
+    .comment-form button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .comment-form button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<p class="text-right">Updated: {{ step.updated_date|date:"d.m.Y" }}</p>
+
+<h1>{{ step.h1 }}</h1>
+
+{% if step.image %}
+    <img src="{{ step.image.url }}" alt="{{ step.get_image_alt }}" style="border-radius: 3px; max-width: 100%; height: auto;" width="1221" height="698">
+{% endif %}
+
+<br><br>
+
+<p>{{ step.description|convert_markdown|safe }}</p>
+
+<br><br><br><br>
+
+<b>Comments</b>
+
+<div class="comments-section">
+    {% if comments %}
+        <ul id="comments-list">
+            {% for comment in comments %}
+            <br>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>{{ comment.username|default:"Anonymous" }}</strong>
+                {% if comment.created_date %}
+                    <span style="font-size: 0.9em; color: #888;">{{ comment.formatted_created_date }}</span>
+                {% endif %}
+            </div>
+            <p>{{ comment.text|linebreaks }}</p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p id="no-comments">No comments yet.</p>
+    {% endif %}
+</div>
+<br>
+
+<form method="post" class="comment-form">
+    {% csrf_token %}
+    <div style="display: none;">
+        <label for="honey_pot">Leave this field empty</label>
+        <input type="text" name="honey_pot" id="honey_pot">
+    </div>
+
+    {% if not user.is_authenticated %}
+    <div>
+        <input type="text" name="user_name" id="user_name" placeholder="Your name" required>
+    </div>
+    {% endif %}
+
+    <textarea name="content" rows="3" placeholder="Write a comment..." required></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

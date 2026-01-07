@@ -1,0 +1,40 @@
+{% extends 'data/base.html' %}
+
+{% block title %}{{ subtopic.title }}{% endblock %}
+
+{% block description %}{{ subtopic.seo_description }}{% endblock %}
+
+{% load blog_extras %}
+
+{% block content %}
+
+
+
+<h1>{{ subtopic.title }}</h1>
+
+<ul class="list-group">
+    {% for step in steps %}
+        <li class="list-group-item">
+            <a href="{% url 'step_detail' step.slug %}">{{ step.title }}</a>
+        </li>
+    {% endfor %}
+</ul><br>
+
+{% if steps.has_other_pages %}
+<div class="pagination">
+    {% if steps.has_previous %}
+        <a href="{% url 'subtopic_pagination' slug=subtopic.slug page=steps.previous_page_number %}">← Назад&nbsp;</a>
+    {% endif %}
+
+    <span class="current">
+        Страница {{ steps.number }} из {{ steps.paginator.num_pages }}
+    </span>
+
+    {% if steps.has_next %}
+        <a href="{% url 'subtopic_pagination' slug=subtopic.slug page=steps.next_page_number %}">&nbsp;Вперед →</a>
+    {% endif %}
+</div>
+{% endif %}
+
+
+{% endblock %}
