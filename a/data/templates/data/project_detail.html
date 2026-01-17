@@ -16,8 +16,7 @@
             <p>{{ item.description_short|safe }}</p>
         {% endif %}
 
-        <p><strong>Статус:</strong> {{ item.status }}</p>
-        <p><strong>Локация:</strong> {{ item.location }}</p>
+        <p><strong>Описание:</strong> {{ item.description_full }}</p>
 
         {% if item.url %}
             <p><a href="{{ item.url }}" target="_blank">Официальный сайт</a></p>

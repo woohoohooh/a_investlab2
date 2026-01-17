@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-#4xddc@0k*^+1k2t@qyw%82+c=+st71pj5pjwb$d^4!^jqiw-e'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['investlab.io', 'localhost', '127.0.0.1', '*']
 
